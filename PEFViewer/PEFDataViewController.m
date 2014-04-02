@@ -10,7 +10,6 @@
 #import "PEFPageView.h"
 #import "PEFPage.h"
 #import "PEFModelController.h"
-#import "PEFConfig.h"
 #import "PEFBrailleTable.h"
 
 @interface PEFDataViewController ()
@@ -44,13 +43,14 @@
     [super viewWillAppear:animated];
 	//[NSString stringWithFormat:@"Sida %i", self.cPage+1]
     self.dataLabel.text = [self.delegate.dataObject description];
-	self.pageView.translation = self.delegate.table.table; // @" a1b'k2l`cif/msp\"e3h9o6r~djg>ntq,*5<-u8v.%{$+x!&;:4|0z7(_?w}#y)=";//self.delegate.config.selectedTable.table;
+	self.pageView.translation = self.delegate.controller.table.table; // @" a1b'k2l`cif/msp\"e3h9o6r~djg>ntq,*5<-u8v.%{$+x!&;:4|0z7(_?w}#y)=";//self.delegate.config.selectedTable.table;
+	[self.pageView setTranslating:self.delegate.controller.isTranslating];
 	self.pageView.dataSource = self.delegate.dataObject;
 	;
 	
 	self.pageView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
 	self.pageView.transform = [self getTransformForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
-	[self setTranslating:self.delegate.controller.isTranslating];
+
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -79,12 +79,6 @@
 	}
 }
 
-#pragma mark - Public API
-- (void)setTranslating:(BOOL)value
-{
-	[self.pageView setTranslating:value];
-}
-
 #pragma mark - Gesture recognizer
 - (void) didTap:(id)sender
 {
@@ -97,7 +91,7 @@
 - (void) notification:(NSNotification *)notification
 {
 	NSNumber *n = [[notification userInfo] objectForKey:@"translating"];
-	[self setTranslating:[n boolValue]];
+	[self.pageView setTranslating:[n boolValue]];
 }
 
 @end

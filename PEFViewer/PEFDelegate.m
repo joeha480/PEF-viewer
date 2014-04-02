@@ -11,5 +11,5 @@
 @implementation PEFDelegate
 @synthesize dataObject = _dataObject;
 @synthesize controller = _controller;
-@synthesize table = _table;
+
 @end

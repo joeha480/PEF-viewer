@@ -16,6 +16,7 @@
 
 @property (nonatomic, getter=isTranslating) BOOL translating;
 @property (readonly) PEFBook* book;
+@property (readonly) PEFBrailleTable *table;
 
 - (id)initWithURL:(NSURL *)url volume:(int)vol config:(PEFBrailleTable *)table;
 - (PEFDataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;

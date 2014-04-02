@@ -14,6 +14,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSString *inboxPath = nil;
+	{
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		if (paths.count>0) {
+			inboxPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Inbox"];
+		}
+	}
+	if (![fm fileExistsAtPath:inboxPath]) {
+		//assume first use
+		[fm createDirectoryAtPath:inboxPath withIntermediateDirectories:YES attributes:nil error:nil];
+		NSURL *pef = [[NSBundle mainBundle] URLForResource:@"butterfly" withExtension:@"pef"];
+		NSError *error;
+		[[NSFileManager defaultManager] copyItemAtURL:pef toURL:[NSURL fileURLWithPath:[inboxPath stringByAppendingPathComponent:@"butterfly.pef"]] error:&error];
+		if (error) {
+			NSLog(@"%@", [error localizedDescription]);
+		}
+	}
     return YES;
 }
 

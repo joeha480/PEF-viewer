@@ -13,6 +13,8 @@
 #import "PEFDelegate.h"
 #import "PEFBrailleTable.h"
 
+static NSString *TRANSLATING_KEY = @"TRANSLATING_KEY";
+
 /*
  A controller object that manages a simple model -- a collection of month names.
  
@@ -25,7 +27,6 @@
 @interface PEFModelController()
 
 @property (readonly) int targetVolume;
-@property (readonly) PEFBrailleTable *table;
 
 @end
 
@@ -33,7 +34,6 @@
 
 @synthesize targetVolume = _targetVolume;
 @synthesize book = _book;
-@synthesize translating = _translating;
 @synthesize table = _table;
 
 - (id)initWithURL:(NSURL *)url volume:(int)vol config:(PEFBrailleTable *)table
@@ -62,8 +62,6 @@
 	PEFDelegate *d = [[PEFDelegate alloc] init];
 	d.dataObject = [self.book pageAtIndex:index volume:self.targetVolume];
 	d.controller = self;
-	NSLog(@"table: %@", self.table);
-	d.table = self.table;
 	dataViewController.delegate = d;
     return dataViewController;
 }
@@ -73,6 +71,18 @@
      // Return the index of the given data view controller.
      // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
     return ((PEFPage *)viewController.delegate.dataObject).index;
+}
+
+#pragma mark -  Getters/Setters
+- (BOOL)isTranslating
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:TRANSLATING_KEY];
+}
+
+- (void)setTranslating:(BOOL)translating
+{
+	[[NSUserDefaults standardUserDefaults] setBool:translating forKey:TRANSLATING_KEY];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Page View Controller Data Source

@@ -50,7 +50,6 @@
 	// Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
 	self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
 	self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleTranslation:)]];
-	self.modelController.translating = NO;
 	self.title = [[self.modelController.book.url filePathURL] lastPathComponent];
 }
 

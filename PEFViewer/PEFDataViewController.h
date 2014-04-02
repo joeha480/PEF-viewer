@@ -10,17 +10,14 @@
 @class PEFPage;
 @class PEFPageView;
 @class PEFModelController;
-@class PEFBrailleTable;
 
 @protocol PEFDataViewControllerDelegate <NSObject>
 
 @property PEFPage *dataObject;
-@property PEFBrailleTable *table;
-@property (weak, getter = isTranslating) PEFModelController *controller;
+@property (weak) PEFModelController *controller;
 
 @end
 @interface PEFDataViewController : UIViewController
-
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (weak) IBOutlet PEFPageView *pageView;
 @property (strong) id<PEFDataViewControllerDelegate> delegate;
