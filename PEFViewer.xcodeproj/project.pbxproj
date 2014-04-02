@@ -31,6 +31,7 @@
 		7F2FBB1017D4FC50000180DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2FBAE217D4FC50000180DF /* Foundation.framework */; };
 		7F2FBB1817D4FC50000180DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F2FBB1617D4FC50000180DF /* InfoPlist.strings */; };
 		7F2FBB1B17D4FC50000180DF /* PEFViewerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2FBB1A17D4FC50000180DF /* PEFViewerTests.m */; };
+		7F63815518EC8E0200545734 /* butterfly.pef in Resources */ = {isa = PBXBuildFile; fileRef = 7F63815418EC8E0200545734 /* butterfly.pef */; };
 		7F6E7960184E59580061C245 /* PEFBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E795F184E59580061C245 /* PEFBook.m */; };
 		7F6E7963184E5C860061C245 /* PEFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E7962184E5C860061C245 /* PEFPage.m */; };
 		7F79C92D18756A9700D7F3E6 /* PEFFileSelctViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F79C92C18756A9700D7F3E6 /* PEFFileSelctViewController.m */; };
@@ -89,6 +90,7 @@
 		7F2FBB1717D4FC50000180DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F2FBB1917D4FC50000180DF /* PEFViewerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEFViewerTests.h; sourceTree = "<group>"; };
 		7F2FBB1A17D4FC50000180DF /* PEFViewerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEFViewerTests.m; sourceTree = "<group>"; };
+		7F63815418EC8E0200545734 /* butterfly.pef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = butterfly.pef; sourceTree = "<group>"; };
 		7F6E795E184E59580061C245 /* PEFBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFBook.h; sourceTree = "<group>"; };
 		7F6E795F184E59580061C245 /* PEFBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFBook.m; sourceTree = "<group>"; };
 		7F6E7961184E5C860061C245 /* PEFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFPage.h; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		7F2FBAE717D4FC50000180DF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7F63815418EC8E0200545734 /* butterfly.pef */,
 				7F2FBAE817D4FC50000180DF /* PEFViewer-Info.plist */,
 				7F2FBAE917D4FC50000180DF /* InfoPlist.strings */,
 				7F2FBAEC17D4FC50000180DF /* main.m */,
@@ -280,6 +283,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = PEF;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Joel Håkansson";
 			};
@@ -311,6 +315,7 @@
 				7F2FBAF317D4FC50000180DF /* Default.png in Resources */,
 				7F79C9471876D1CF00D7F3E6 /* app_icon152.png in Resources */,
 				7F2FBAF517D4FC50000180DF /* Default@2x.png in Resources */,
+				7F63815518EC8E0200545734 /* butterfly.pef in Resources */,
 				7F2FBAF717D4FC50000180DF /* Default-568h@2x.png in Resources */,
 				7F2FBB0317D4FC50000180DF /* MainStoryboard_iPhone.storyboard in Resources */,
 				7F2FBB0617D4FC50000180DF /* MainStoryboard_iPad.storyboard in Resources */,
