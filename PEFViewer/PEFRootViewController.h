@@ -7,12 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailViewManager.h"
 @class PEFModelController;
-@class PEFConfig;
+@class PEFBrailleTableFactory;
 
-@interface PEFRootViewController : UIViewController <UIPageViewControllerDelegate>
+@protocol PEFRootViewControllerDelegate <NSObject>
+- (void)configureWithURL:(NSURL *)url table:(PEFBrailleTableFactory *)config;
+@end
+
+@interface PEFRootViewController : UIViewController <PEFRootViewControllerDelegate, SubstitutableDetailViewController, UIPageViewControllerDelegate>
+- (void)gotoPage:(NSUInteger)pageToGoTo;
+
+@property (nonatomic, retain) IBOutlet UINavigationItem *toolbar;
+
+/// SubstitutableDetailViewController
+@property (nonatomic, retain) UIBarButtonItem *navigationPaneBarButtonItem;
+
 @property (strong, nonatomic) PEFModelController *modelController;
-
 @property (strong, nonatomic) UIPageViewController *pageViewController;
+@property IBOutlet UIBarButtonItem *navigate;
+@property IBOutlet UIBarButtonItem *sliderButton;
+@property IBOutlet UIBarButtonItem *pageNumber;
+
+- (IBAction)toggleTranslation:(id)sender;
 
 @end

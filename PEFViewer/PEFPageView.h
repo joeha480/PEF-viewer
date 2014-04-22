@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) PEFPage *dataSource;
 @property (readonly) CGSize originalSize;
+@property (strong) UIView *page;
 @property NSString *translation;
 - (void)setTranslating:(BOOL)value;
 @end

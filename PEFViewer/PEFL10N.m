@@ -17,5 +17,13 @@
 {
 	return @"%i files";
 }
++ (NSString *)bookmarksTitle
+{
+	return @"Bookmarks";
+}
++ (NSString *)tableSelectTitle
+{
+	return @"Select Table";
+}
 
 @end

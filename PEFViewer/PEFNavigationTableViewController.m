@@ -1,24 +1,23 @@
 //
-//  PEFTableSelectViewController.m
+//  PEFNavigationTableViewController.m
 //  PEFViewer
 //
-//  Created by Joel Håkansson on 2014-02-28.
+//  Created by Joel Håkansson on 2014-04-12.
 //  Copyright (c) 2014 Joel Håkansson. All rights reserved.
 //
 
-#import "PEFTableSelectViewController.h"
-#import "PEFBrailleTableFactory.h"
-#import "PEFBrailleTable.h"
+#import "PEFNavigationTableViewController.h"
 #import "PEFL10N.h"
 
-static NSString *TABLE_CHANGED_NOTIFICATION = @"PEFTableChanged";
+static NSString *VOLUME_ADDED_NOTIFICATION = @"PEFVolumeAdded";
 
-@interface PEFTableSelectViewController ()
-
+@interface PEFNavigationTableViewController ()
+@property (readonly) UIBarButtonItem *cancelButton;
 @end
 
-@implementation PEFTableSelectViewController
+@implementation PEFNavigationTableViewController
 @synthesize delegate = _delegate;
+@synthesize cancelButton = _cancelButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,17 +31,27 @@ static NSString *TABLE_CHANGED_NOTIFICATION = @"PEFTableChanged";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-											 initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-											 target:self
-											 action:@selector(done:)];
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	self.title = [PEFL10N tableSelectTitle];
+	_cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(cancel:)];
+	self.navigationItem.rightBarButtonItem = self.cancelButton;
+	self.title = [PEFL10N bookmarksTitle];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notification:) name:VOLUME_ADDED_NOTIFICATION object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,39 +65,36 @@ static NSString *TABLE_CHANGED_NOTIFICATION = @"PEFTableChanged";
 	return YES;
 }
 
-#pragma mark - Dismiss
-- (void)done:(id)sender
-{
-	[self.delegate dismiss:self];
-}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [self.delegate countVolumes];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.delegate.config.tables.count;
+    return [self.delegate countSectionsInVolume:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.textLabel.text = [NSString stringWithFormat:@"Section %li", (long)indexPath.row+1];
     // Configure the cell...
-	PEFBrailleTable *t = [self.delegate.config.tables objectAtIndex:indexPath.row];
-	cell.textLabel.text = t.tName;
-	cell.detailTextLabel.text = t.tDescription;
-	if (self.delegate.config.selectedTableIndex==indexPath.row) {
-		cell.accessoryType = UITableViewCellAccessoryCheckmark;
-	}
-
+    
     return cell;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	return [NSString stringWithFormat:@"Volume %li", (long)section+1];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[self.delegate didSelectSection:indexPath.row+1 volume:indexPath.section+1];
 }
 
 /*
@@ -107,8 +113,7 @@ static NSString *TABLE_CHANGED_NOTIFICATION = @"PEFTableChanged";
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
@@ -130,25 +135,26 @@ static NSString *TABLE_CHANGED_NOTIFICATION = @"PEFTableChanged";
 }
 */
 
-#pragma mark - Delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	self.delegate.config.selectedTableIndex = indexPath.row;
-	NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:self.delegate.config.selectedTable, @"table", nil];
-	[[NSNotificationCenter defaultCenter] postNotificationName:TABLE_CHANGED_NOTIFICATION object:self userInfo:info];
-	[self.delegate dismiss:self];
-	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
 /*
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+*/
+#pragma mark - Selector
+- (void)cancel:(id)sender
+{
+	[self.delegate didCancelSelection];
+}
 
- */
+#pragma mark - Notifications
+- (void) notification:(NSNotification *)notification
+{
+	[self.tableView reloadData];
+}
 
 @end

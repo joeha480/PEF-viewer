@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class PEFBrailleTable;
 
-@interface PEFConfig : NSObject
+@interface PEFBrailleTableFactory : NSObject
 @property (readonly) NSArray *tables;
 @property PEFBrailleTable *selectedTable;
 @property (nonatomic) NSUInteger selectedTableIndex;

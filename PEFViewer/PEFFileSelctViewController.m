@@ -11,11 +11,15 @@
 #import "PEFModelController.h"
 #import "PEFL10N.h"
 #import "PEFTableSelectViewController.h"
-#import "PEFConfig.h"
+#import "PEFBrailleTableFactory.h"
+#import "PEFAboutViewController.h"
+
 
 @interface PEFFileSelctViewController ()<PEFTableSelectViewControllerDelegate>
 @property (readonly) NSArray *files;
 @property (readonly) NSString *inputDir;
+@property NSNumber *openIndex;
+@property NSString *selectedFile;
 @end
 
 @implementation PEFFileSelctViewController
@@ -25,6 +29,7 @@
 
 NSString *const TABLE_SELECT_SEGUE_IDENTIFIER = @"tableSelectSegue";
 NSString *const VIEW_SEGUE_IDENTIFIER = @"viewerSegue";
+NSString *const ABOUT_SEGUE_IDENTIFIER = @"aboutSegue";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,7 +52,7 @@ NSString *const VIEW_SEGUE_IDENTIFIER = @"viewerSegue";
 	
 	//self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(setup:)]];
 	self.title = [PEFL10N filesTitle];
-	_config = [[PEFConfig alloc] init];
+	_config = [[PEFBrailleTableFactory alloc] init];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileListModified:) name:@"PEF-FileListModifiled" object:nil];
 }
 
@@ -111,6 +116,15 @@ NSString *const VIEW_SEGUE_IDENTIFIER = @"viewerSegue";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+		if ([self.selectedFile isEqualToString:[self.files objectAtIndex:indexPath.row]]) {
+			@try {
+				[self performSegueWithIdentifier:@"deselectFileSegue" sender:self];
+			}
+			@catch (NSException *exception) {
+				//we're on iPhone
+			}
+		}
+
         // Delete the row from the data source
 		[[NSFileManager defaultManager] removeItemAtPath:[self.inputDir stringByAppendingPathComponent:[self.files objectAtIndex:indexPath.row]] error:nil];
 		_files = nil;
@@ -145,19 +159,32 @@ NSString *const VIEW_SEGUE_IDENTIFIER = @"viewerSegue";
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+	UIViewController *vc = segue.destinationViewController;
+	if ([vc isKindOfClass:[UINavigationController class]]) {
+		vc = ((UINavigationController *)vc).viewControllers[0];
+	}
 	if ([segue.identifier isEqualToString:VIEW_SEGUE_IDENTIFIER]) {
 		// Get the new view controller using [segue destinationViewController].
-		PEFRootViewController *controller = (PEFRootViewController *)[segue destinationViewController];
+		id<PEFRootViewControllerDelegate> controller = (id<PEFRootViewControllerDelegate>)vc;
 		// Pass the selected object to the new view controller.
-		NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-		NSLog(@"Self config: %@", self.config);
-		controller.modelController = [[PEFModelController alloc]
-									  initWithURL:[NSURL fileURLWithPath:[self.inputDir stringByAppendingPathComponent:[self.files objectAtIndex:indexPath.row]]]
-									  volume:1
-									  config:self.config.selectedTable];
+		id obj;
+		if ([sender isKindOfClass:[UITableViewCell class]]) {
+			NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+			obj = [self.files objectAtIndex:indexPath.row];
+		} else if (self.openIndex) {
+			obj = [self.files objectAtIndex:[self.openIndex intValue]];
+			self.openIndex = nil;
+		}
+		self.selectedFile = obj;
+		[controller configureWithURL:[NSURL fileURLWithPath:[self.inputDir stringByAppendingPathComponent:obj]] table:self.config];
+		
 	} else if ([segue.identifier isEqualToString:TABLE_SELECT_SEGUE_IDENTIFIER]) {
-		UINavigationController *v = segue.destinationViewController;
-		((PEFTableSelectViewController *)[v.viewControllers objectAtIndex:0]).delegate = self;
+		//UINavigationController *v = segue.destinationViewController;
+		//[v.viewControllers objectAtIndex:0])
+		((PEFTableSelectViewController *)vc).delegate = self;
+	} else if ([segue.identifier isEqualToString:ABOUT_SEGUE_IDENTIFIER]) {
+		//UINavigationController *v = segue.destinationViewController;
+		//((PEFAboutViewController *)[v.viewControllers objectAtIndex:0]).delegate = self;
 	}
 }
 
@@ -171,7 +198,6 @@ NSString *const VIEW_SEGUE_IDENTIFIER = @"viewerSegue";
 		}
 		[[NSFileManager defaultManager] createDirectoryAtPath:_inputDir withIntermediateDirectories:YES attributes:nil error:NULL];
 	}
-	NSLog(@"%@", _inputDir);
 	return _inputDir;
 }
 
@@ -189,21 +215,27 @@ NSString *const VIEW_SEGUE_IDENTIFIER = @"viewerSegue";
 {
 	_files = nil;
 	[self.tableView reloadData];
-	NSLog(@"Should open file?");
+	NSURL *url = [[n userInfo] objectForKey:@"File-URL"];
+	int i = 0;
+	for (NSString *name in self.files) {
+		if ([[url lastPathComponent] isEqualToString:name]) {
+			self.openIndex = [NSNumber numberWithInt:i];
+			break;
+		}
+		i++;
+	}
 	[self.navigationController popToViewController:self animated:YES];
 	//open new file
-/*	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.files.count-1 inSection:0];
-	[self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-	[self tableView:self.tableView didSelectRowAtIndexPath:indexPath];*/
+	[self performSegueWithIdentifier:VIEW_SEGUE_IDENTIFIER sender:self];
 }
+
 #pragma mark - Delegate
 - (void)dismiss:(PEFFileSelctViewController *)viewController
 {
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
-- (PEFConfig *)config
+- (PEFBrailleTableFactory *)config
 {
 	return _config;
 }
-
 @end

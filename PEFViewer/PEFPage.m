@@ -8,6 +8,7 @@
 
 #import "PEFPage.h"
 #import "PEFRow.h"
+#import "PEFAttributes.h"
 
 @interface PEFPage()
 @property (strong) NSMutableArray *data;
@@ -16,14 +17,17 @@
 @implementation PEFPage
 @synthesize width = _width;
 @synthesize height = _height;
+@synthesize volumeNumber = _volumeNumber;
+@synthesize sectionNumber = _sectionNumber;
+@synthesize pageNumber = _pageNumber;
 @synthesize data = _data;
 
-- (id)initWithWidth:(int)w height:(int)h
+- (id)initWithAttributes:(PEFAttributes *)atts
 {
 	self = [super init];
 	if (self) {
-		_width = w;
-		_height = h;
+		_width = atts.width;
+		_height = atts.height;
 		_data = [[NSMutableArray alloc] initWithCapacity:10];
 	}
 	return self;

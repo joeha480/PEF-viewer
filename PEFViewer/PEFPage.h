@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 @class PEFRow;
+@class PEFAttributes;
 
 @interface PEFPage : NSObject
 
 @property NSUInteger index;
+@property NSUInteger volumeNumber;
+@property NSUInteger sectionNumber;
+@property NSUInteger pageNumber;
 @property (readonly) NSArray *rows;
 @property NSUInteger width;
 @property NSUInteger height;
 - (void)addRow:(PEFRow *)row;
-- (id)initWithWidth:(int)w height:(int)h;
+- (id)initWithAttributes:(PEFAttributes *)atts;
 @end

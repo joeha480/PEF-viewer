@@ -8,12 +8,22 @@
 
 #import "PEFAppDelegate.h"
 #import "PEFFileSelctViewController.h"
+#import "DetailViewManager.h"
+
+@interface PEFAppDelegate()
+@property DetailViewManager *vm;
+@end
 
 @implementation PEFAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+	 // This code works in the simulator, but not on the device, due to restrictions in the file
+	 // system. The inclusion of a default file would be nice, however, it has to be written 
+	 // to another folder, which the app scans for files.
+	/* 
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSString *inboxPath = nil;
 	{
@@ -31,6 +41,14 @@
 		if (error) {
 			NSLog(@"%@", [error localizedDescription]);
 		}
+	}*/
+
+	UIViewController *vc = self.window.rootViewController;
+	if ([vc isKindOfClass:[UISplitViewController class]]) {
+		NSLog(@"Split view");
+		UISplitViewController *svc = (UISplitViewController *)vc;
+		self.vm = [[DetailViewManager alloc] init];
+		svc.delegate = self.vm;
 	}
     return YES;
 }

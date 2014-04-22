@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 @class PEFTableSelectViewController;
-@class PEFConfig;
+@class PEFBrailleTableFactory;
 
 @protocol PEFTableSelectViewControllerDelegate <NSObject>
 
-@property (readonly) PEFConfig *config;
+@property (readonly) PEFBrailleTableFactory *config;
 - (void)dismiss:(PEFTableSelectViewController*)viewController;
 
 @end

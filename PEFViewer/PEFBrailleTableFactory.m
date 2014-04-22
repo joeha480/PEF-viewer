@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Joel Håkansson. All rights reserved.
 //
 
-#import "PEFConfig.h"
+#import "PEFBrailleTableFactory.h"
 #import "PEFBrailleTable.h"
 
 static NSString *TABLE_INDEX_KEY = @"TABLE_INDEX_KEY";
 
-@interface PEFConfig()
+@interface PEFBrailleTableFactory()
 @end
 
-@implementation PEFConfig
+@implementation PEFBrailleTableFactory
 @synthesize tables = _tables;
 @synthesize selectedTable = _selectedTable;
 @synthesize selectedTableIndex = _selectedTableIndex;
@@ -60,6 +60,5 @@ static NSString *TABLE_INDEX_KEY = @"TABLE_INDEX_KEY";
 	_selectedTable = [self.tables objectAtIndex:self.selectedTableIndex];
 	[[NSUserDefaults standardUserDefaults] setInteger:self.selectedTableIndex forKey:TABLE_INDEX_KEY];
 	[[NSUserDefaults standardUserDefaults] synchronize];
-	NSLog(@"Table: %@", _selectedTable.table);
 }
 @end

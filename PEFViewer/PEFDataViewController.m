@@ -22,8 +22,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
-	[self.view addGestureRecognizer:tap];
+
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notification:) name:@"PEF-update" object:nil];
 }
 
@@ -42,15 +41,17 @@
 {
     [super viewWillAppear:animated];
 	//[NSString stringWithFormat:@"Sida %i", self.cPage+1]
-    self.dataLabel.text = [self.delegate.dataObject description];
+    self.dataLabel.text = [NSString stringWithFormat:@"Volume %lu, Section %lu | Page %lu", (unsigned long)self.delegate.dataObject.volumeNumber, (unsigned long)self.delegate.dataObject.sectionNumber, (unsigned long)self.delegate.dataObject.pageNumber];
 	self.pageView.translation = self.delegate.controller.table.table; // @" a1b'k2l`cif/msp\"e3h9o6r~djg>ntq,*5<-u8v.%{$+x!&;:4|0z7(_?w}#y)=";//self.delegate.config.selectedTable.table;
 	[self.pageView setTranslating:self.delegate.controller.isTranslating];
 	self.pageView.dataSource = self.delegate.dataObject;
 	;
-	
-	self.pageView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
-	self.pageView.transform = [self getTransformForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
-
+/*
+	self.pageView.page.transform = [self getTransformForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
+	self.pageView.page.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+	CGRect r = self.pageView.page.frame;
+	r.origin = CGPointMake(r.origin.x, 0);
+	[self.pageView.page setFrame:r];*/
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -60,32 +61,44 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+	[super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+/*
 	[UIView animateWithDuration:duration animations:^ {
-		self.pageView.transform = [self getTransformForOrientation:toInterfaceOrientation];
-	}];
+		//self.pageView.page.transform = [self getTransformForOrientation:toInterfaceOrientation];
+		self.pageView.page.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+		CGRect r = self.pageView.page.frame;
+		r.origin = CGPointMake(r.origin.x, 0);
+		[self.pageView.page setFrame:r];
+	}];*/
 }
+/*
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+	self.pageView.page.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+	CGRect r = self.pageView.page.frame;
+	r.origin = CGPointMake(r.origin.x, 0);
+	[self.pageView.page setFrame:r];
+
+}*/
 
 #pragma mark - private
+/*
 - (CGAffineTransform)getTransformForOrientation:(UIInterfaceOrientation)orientation
 {
 	CGSize s = [UIScreen mainScreen].bounds.size;
-	float scale = 0.94*MIN(s.width / self.pageView.originalSize.width, s.height / self.pageView.originalSize.height) ;
+	float scale = 0.90*MIN(s.width / self.pageView.originalSize.width, s.height / self.pageView.originalSize.height) ;
 	if (UIInterfaceOrientationIsLandscape(orientation)) {
 		scale = scale * (s.width/s.height);
 		NSLog(@"%f",scale);
 		return CGAffineTransformMakeScale(scale, scale);
 	} else {
+		NSLog(@"%f",scale);
 		return CGAffineTransformMakeScale(scale, scale);
 	}
 }
+*/
 
-#pragma mark - Gesture recognizer
-- (void) didTap:(id)sender
-{
-	BOOL newStatus = !self.navigationController.isNavigationBarHidden;
-	[self.navigationController setNavigationBarHidden:newStatus animated:YES];
-	[self.navigationController setToolbarHidden:newStatus animated:YES];
-}
 
 #pragma mark - Notifications
 - (void) notification:(NSNotification *)notification

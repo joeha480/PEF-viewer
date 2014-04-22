@@ -11,4 +11,6 @@
 @interface PEFL10N : NSObject
 + (NSString *)filesTitle;
 + (NSString *)filesFooter;
++ (NSString *)bookmarksTitle;
++ (NSString *)tableSelectTitle;
 @end

@@ -15,11 +15,16 @@
 
 - (NSUInteger)pageCountInVolume:(NSUInteger)volume;
 - (PEFPage *)pageAtIndex:(NSUInteger)index volume:(NSUInteger)volume;
+- (NSUInteger)sectionsInVolume:(NSUInteger)volume;
+- (NSUInteger)indexOfFirstPageInSection:(NSUInteger)section volume:(NSUInteger)volume;
+- (void)abortLoading;
+
+@property (readonly) NSUInteger volumes;
 @property (readonly) NSURL *url;
-@property NSString* dcCreator;
-@property NSString* dcIdentifier;
-@property NSString* dcTitle;
-@property NSString* dcDate;
-@property NSString* dcDescription;
+@property (readonly) BOOL loaded;
+@property NSMutableArray *sectionsInVolume;
+@property NSMutableDictionary* metadata;
+@property NSMutableArray* errors;
+@property NSMutableArray* warnings;
 
 @end

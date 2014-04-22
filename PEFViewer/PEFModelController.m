@@ -44,14 +44,26 @@ static NSString *TRANSLATING_KEY = @"TRANSLATING_KEY";
 		_book = [[PEFBook alloc] initWithURL:url];
 		_table = table;
 //		_pageData = [[dateFormatter monthSymbols] copy];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableChanged:) name:@"PEFTableChanged" object:nil];
 
     }
     return self;
 }
 
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (PEFDataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard
 {   
     // Return the data view controller for the given index.
+	while (!self.book.loaded && (([self.book pageCountInVolume:self.targetVolume] == 0) || (index >= [self.book pageCountInVolume:self.targetVolume]))) {
+		if (self.book.errors.count>0) {
+			return nil;
+		}
+		[NSThread sleepForTimeInterval:0.1f];
+	}
     if (([self.book pageCountInVolume:self.targetVolume] == 0) || (index >= [self.book pageCountInVolume:self.targetVolume])) {
 		NSLog(@"Out of bounds");
         return nil;
@@ -110,6 +122,12 @@ static NSString *TRANSLATING_KEY = @"TRANSLATING_KEY";
         return nil;
     }
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
+}
+
+#pragma mark - Notifications
+- (void) tableChanged:(NSNotification *)notification
+{
+	_table = [[notification userInfo] objectForKey:@"table"];
 }
 
 @end
