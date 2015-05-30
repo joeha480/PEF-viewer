@@ -53,10 +53,6 @@ int h;
 - (void)setup
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableChanged:) name:@"PEFTableChanged" object:nil];
-	_font = [UIFont fontWithName:@"Courier New" size:rh * fontRatio];
-	// 1pt	=	1 inch		25.4 mm		 px
-	//			72 			 inch		0.15875	mm
-	//NSLog(@"Cap height: %f", (((_font.capHeight / 72) * 25.4) / 0.15875));
 }
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -120,6 +116,11 @@ int h;
 	for (UIView *v in self.subviews) {
 		[v removeFromSuperview];
 	}
+	rh = MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) / self.dataSource.height;
+	_font = [UIFont fontWithName:@"Courier New" size:rh * fontRatio];
+	// 1pt	=	1 inch		25.4 mm		 px
+	//			72 			 inch		0.15875	mm
+	//NSLog(@"Cap height: %f", (((_font.capHeight / 72) * 25.4) / 0.15875));
 
 	NSString *testString = [@"" stringByPaddingToLength:self.dataSource.width withString:@"\u2800" startingAtIndex:0];
 	CGSize ex = [testString sizeWithAttributes:[[NSDictionary alloc] initWithObjects:@[self.font] forKeys:@[NSFontAttributeName]]];
