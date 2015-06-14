@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface PEFAttributes : NSObject
-- (id)initWitWidth:(int)w height:(int)h duplex:(BOOL)d rowgap:(int)rg;
+- (id)initWithWidth:(int)w height:(int)h duplex:(BOOL)d rowgap:(int)rg;
 @property (readonly) int width;
 @property (readonly) int height;
 @property (readonly) BOOL duplex;

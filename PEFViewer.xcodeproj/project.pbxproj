@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7F06405A187951C400E71781 /* PEFDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F064059187951C400E71781 /* PEFDelegate.m */; };
-		7F06405D1882B30000E71781 /* PEFAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F06405C1882B30000E71781 /* PEFAttributes.m */; };
 		7F177C1718C125C900175A06 /* PEFTableSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F177C1618C125C900175A06 /* PEFTableSelectViewController.m */; };
 		7F177C1A18C1D42300175A06 /* PEFBrailleTableFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F177C1918C1D42300175A06 /* PEFBrailleTableFactory.m */; };
 		7F177C1D18C1D8D700175A06 /* PEFBrailleTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F177C1C18C1D8D700175A06 /* PEFBrailleTable.m */; };
@@ -42,9 +41,10 @@
 		7F6E7960184E59580061C245 /* PEFBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E795F184E59580061C245 /* PEFBook.m */; };
 		7F6E7963184E5C860061C245 /* PEFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E7962184E5C860061C245 /* PEFPage.m */; };
 		7F7795A21B2DC0E9005008C8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7795A11B2DC0E9005008C8 /* Localization.swift */; };
+		7F7795A41B2DC64F005008C8 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7795A31B2DC64F005008C8 /* Row.swift */; };
+		7F7795A61B2DC858005008C8 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7795A51B2DC858005008C8 /* Attributes.swift */; };
 		7F79C92D18756A9700D7F3E6 /* PEFFileSelctViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F79C92C18756A9700D7F3E6 /* PEFFileSelctViewController.m */; };
 		7F79C93318758CAC00D7F3E6 /* PEFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F79C93218758CAC00D7F3E6 /* PEFPageView.m */; };
-		7F80D68C18E0B1C900947E3E /* PEFRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F80D68B18E0B1C900947E3E /* PEFRow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +115,8 @@
 		7F6E7962184E5C860061C245 /* PEFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFPage.m; sourceTree = "<group>"; };
 		7F7795A01B2DC0E8005008C8 /* PEFViewer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEFViewer-Bridging-Header.h"; sourceTree = "<group>"; };
 		7F7795A11B2DC0E9005008C8 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		7F7795A31B2DC64F005008C8 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		7F7795A51B2DC858005008C8 /* Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
 		7F79C92B18756A9700D7F3E6 /* PEFFileSelctViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFFileSelctViewController.h; sourceTree = "<group>"; };
 		7F79C92C18756A9700D7F3E6 /* PEFFileSelctViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFFileSelctViewController.m; sourceTree = "<group>"; };
 		7F79C92E18756E8600D7F3E6 /* PEFL10N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFL10N.h; sourceTree = "<group>"; };
@@ -238,12 +240,14 @@
 			children = (
 				7F06405B1882B30000E71781 /* PEFAttributes.h */,
 				7F06405C1882B30000E71781 /* PEFAttributes.m */,
+				7F7795A51B2DC858005008C8 /* Attributes.swift */,
 				7F6E795E184E59580061C245 /* PEFBook.h */,
 				7F6E795F184E59580061C245 /* PEFBook.m */,
 				7F6E7961184E5C860061C245 /* PEFPage.h */,
 				7F6E7962184E5C860061C245 /* PEFPage.m */,
 				7F80D68A18E0B1C900947E3E /* PEFRow.h */,
 				7F80D68B18E0B1C900947E3E /* PEFRow.m */,
+				7F7795A31B2DC64F005008C8 /* Row.swift */,
 				7F177C1818C1D42300175A06 /* PEFBrailleTableFactory.h */,
 				7F177C1918C1D42300175A06 /* PEFBrailleTableFactory.m */,
 				7F177C1B18C1D8D700175A06 /* PEFBrailleTable.h */,
@@ -429,18 +433,18 @@
 				7F177C1718C125C900175A06 /* PEFTableSelectViewController.m in Sources */,
 				7F177C1D18C1D8D700175A06 /* PEFBrailleTable.m in Sources */,
 				7F2FBAF117D4FC50000180DF /* PEFAppDelegate.m in Sources */,
-				7F80D68C18E0B1C900947E3E /* PEFRow.m in Sources */,
 				7F3937BD18F9CF6000CCDB64 /* PEFNavigationTableViewController.m in Sources */,
 				7F79C93318758CAC00D7F3E6 /* PEFPageView.m in Sources */,
 				7F3937BA18F9A0DA00CCDB64 /* PEFEmptyViewController.m in Sources */,
 				7F06405A187951C400E71781 /* PEFDelegate.m in Sources */,
 				7F654D8018FEFE68006C0BB9 /* DetailViewManager.m in Sources */,
 				7F2FBAFA17D4FC50000180DF /* PEFRootViewController.m in Sources */,
+				7F7795A61B2DC858005008C8 /* Attributes.swift in Sources */,
 				7F2FBAFD17D4FC50000180DF /* PEFDataViewController.m in Sources */,
 				7F79C92D18756A9700D7F3E6 /* PEFFileSelctViewController.m in Sources */,
 				7F6E7960184E59580061C245 /* PEFBook.m in Sources */,
 				7F6E7963184E5C860061C245 /* PEFPage.m in Sources */,
-				7F06405D1882B30000E71781 /* PEFAttributes.m in Sources */,
+				7F7795A41B2DC64F005008C8 /* Row.swift in Sources */,
 				7F2FBB0017D4FC50000180DF /* PEFModelController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

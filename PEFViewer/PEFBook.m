@@ -298,7 +298,7 @@ static NSString *E_RIGHTS = @"rights";*/
 		}
 	}
 	
-	return [[PEFAttributes alloc] initWitWidth:ci height:ri duplex:db rowgap:rgi];
+	return [[PEFAttributes alloc] initWithWidth:ci height:ri duplex:db rowgap:rgi];
 }
 
 - (PEFAttributes *)getRowgap:(NSDictionary *)attributeDict defaults:(PEFAttributes *)defaults
@@ -314,7 +314,7 @@ static NSString *E_RIGHTS = @"rights";*/
 			rgi = defaults.rowgap;
 		}
 	}
-	return [[PEFAttributes alloc] initWitWidth:defaults.width
+	return [[PEFAttributes alloc] initWithWidth:defaults.width
 										height:defaults.height
 										duplex:defaults.duplex
 										rowgap:rgi];

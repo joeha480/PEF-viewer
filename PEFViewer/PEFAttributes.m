@@ -14,7 +14,7 @@
 @synthesize duplex = _duplex;
 @synthesize rowgap = _rowgap;
 
-- (id)initWitWidth:(int)w height:(int)h duplex:(BOOL)d rowgap:(int)rg
+- (id)initWithWidth:(int)w height:(int)h duplex:(BOOL)d rowgap:(int)rg
 {
 	self = [super init];
 	if (self) {
