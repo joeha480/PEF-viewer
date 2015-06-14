@@ -23,7 +23,6 @@
 		7F2FBB0017D4FC50000180DF /* PEFModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2FBAFF17D4FC50000180DF /* PEFModelController.m */; };
 		7F2FBB0317D4FC50000180DF /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F2FBB0117D4FC50000180DF /* MainStoryboard_iPhone.storyboard */; };
 		7F2FBB0617D4FC50000180DF /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F2FBB0417D4FC50000180DF /* MainStoryboard_iPad.storyboard */; };
-		7F2FBB0E17D4FC50000180DF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2FBB0D17D4FC50000180DF /* SenTestingKit.framework */; };
 		7F2FBB0F17D4FC50000180DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2FBAE017D4FC50000180DF /* UIKit.framework */; };
 		7F2FBB1017D4FC50000180DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2FBAE217D4FC50000180DF /* Foundation.framework */; };
 		7F2FBB1817D4FC50000180DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F2FBB1617D4FC50000180DF /* InfoPlist.strings */; };
@@ -42,8 +41,8 @@
 		7F654DA9190147B7006C0BB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F654DA8190147B7006C0BB9 /* Images.xcassets */; };
 		7F6E7960184E59580061C245 /* PEFBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E795F184E59580061C245 /* PEFBook.m */; };
 		7F6E7963184E5C860061C245 /* PEFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E7962184E5C860061C245 /* PEFPage.m */; };
+		7F7795A21B2DC0E9005008C8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7795A11B2DC0E9005008C8 /* Localization.swift */; };
 		7F79C92D18756A9700D7F3E6 /* PEFFileSelctViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F79C92C18756A9700D7F3E6 /* PEFFileSelctViewController.m */; };
-		7F79C93018756E8600D7F3E6 /* PEFL10N.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F79C92F18756E8600D7F3E6 /* PEFL10N.m */; };
 		7F79C93318758CAC00D7F3E6 /* PEFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F79C93218758CAC00D7F3E6 /* PEFPageView.m */; };
 		7F80D68C18E0B1C900947E3E /* PEFRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F80D68B18E0B1C900947E3E /* PEFRow.m */; };
 /* End PBXBuildFile section */
@@ -87,8 +86,7 @@
 		7F2FBAFF17D4FC50000180DF /* PEFModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PEFModelController.m; sourceTree = "<group>"; };
 		7F2FBB0217D4FC50000180DF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		7F2FBB0517D4FC50000180DF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		7F2FBB0C17D4FC50000180DF /* PEFViewerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEFViewerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F2FBB0D17D4FC50000180DF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		7F2FBB0C17D4FC50000180DF /* PEFViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEFViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F2FBB1517D4FC50000180DF /* PEFViewerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PEFViewerTests-Info.plist"; sourceTree = "<group>"; };
 		7F2FBB1717D4FC50000180DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7F2FBB1917D4FC50000180DF /* PEFViewerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEFViewerTests.h; sourceTree = "<group>"; };
@@ -115,6 +113,8 @@
 		7F6E795F184E59580061C245 /* PEFBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFBook.m; sourceTree = "<group>"; };
 		7F6E7961184E5C860061C245 /* PEFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFPage.h; sourceTree = "<group>"; };
 		7F6E7962184E5C860061C245 /* PEFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFPage.m; sourceTree = "<group>"; };
+		7F7795A01B2DC0E8005008C8 /* PEFViewer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEFViewer-Bridging-Header.h"; sourceTree = "<group>"; };
+		7F7795A11B2DC0E9005008C8 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		7F79C92B18756A9700D7F3E6 /* PEFFileSelctViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFFileSelctViewController.h; sourceTree = "<group>"; };
 		7F79C92C18756A9700D7F3E6 /* PEFFileSelctViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFFileSelctViewController.m; sourceTree = "<group>"; };
 		7F79C92E18756E8600D7F3E6 /* PEFL10N.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFL10N.h; sourceTree = "<group>"; };
@@ -140,7 +140,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F2FBB0E17D4FC50000180DF /* SenTestingKit.framework in Frameworks */,
 				7F2FBB0F17D4FC50000180DF /* UIKit.framework in Frameworks */,
 				7F2FBB1017D4FC50000180DF /* Foundation.framework in Frameworks */,
 			);
@@ -163,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				7F2FBADD17D4FC50000180DF /* PEFViewer.app */,
-				7F2FBB0C17D4FC50000180DF /* PEFViewerTests.octest */,
+				7F2FBB0C17D4FC50000180DF /* PEFViewerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,7 +174,6 @@
 				7F2FBAE017D4FC50000180DF /* UIKit.framework */,
 				7F2FBAE217D4FC50000180DF /* Foundation.framework */,
 				7F2FBAE417D4FC50000180DF /* CoreGraphics.framework */,
-				7F2FBB0D17D4FC50000180DF /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,6 +181,7 @@
 		7F2FBAE617D4FC50000180DF /* PEFViewer */ = {
 			isa = PBXGroup;
 			children = (
+				7F7795A01B2DC0E8005008C8 /* PEFViewer-Bridging-Header.h */,
 				7F3937B518F7077B00CCDB64 /* Localization */,
 				7F3937B418F7074300CCDB64 /* View */,
 				7F3937B318F7065500CCDB64 /* View Controller */,
@@ -295,6 +294,7 @@
 			children = (
 				7F79C92E18756E8600D7F3E6 /* PEFL10N.h */,
 				7F79C92F18756E8600D7F3E6 /* PEFL10N.m */,
+				7F7795A11B2DC0E9005008C8 /* Localization.swift */,
 			);
 			name = Localization;
 			sourceTree = "<group>";
@@ -335,8 +335,8 @@
 			);
 			name = PEFViewerTests;
 			productName = PEFViewerTests;
-			productReference = 7F2FBB0C17D4FC50000180DF /* PEFViewerTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 7F2FBB0C17D4FC50000180DF /* PEFViewerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -348,6 +348,11 @@
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Joel Håkansson";
+				TargetAttributes = {
+					7F2FBADC17D4FC50000180DF = {
+						DevelopmentTeam = NWGR9Q8LHZ;
+					};
+				};
 			};
 			buildConfigurationList = 7F2FBAD817D4FC50000180DF /* Build configuration list for PBXProject "PEFViewer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -419,9 +424,9 @@
 			files = (
 				7F5B8D3618FEF1770001CB6C /* PEFAboutViewController.m in Sources */,
 				7F2FBAED17D4FC50000180DF /* main.m in Sources */,
+				7F7795A21B2DC0E9005008C8 /* Localization.swift in Sources */,
 				7F177C1A18C1D42300175A06 /* PEFBrailleTableFactory.m in Sources */,
 				7F177C1718C125C900175A06 /* PEFTableSelectViewController.m in Sources */,
-				7F79C93018756E8600D7F3E6 /* PEFL10N.m in Sources */,
 				7F177C1D18C1D8D700175A06 /* PEFBrailleTable.m in Sources */,
 				7F2FBAF117D4FC50000180DF /* PEFAppDelegate.m in Sources */,
 				7F80D68C18E0B1C900947E3E /* PEFRow.m in Sources */,
@@ -557,11 +562,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PEFViewer/PEFViewer-Prefix.pch";
 				INFOPLIST_FILE = "PEFViewer/PEFViewer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PEFViewer/PEFViewer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -571,11 +581,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PEFViewer/PEFViewer-Prefix.pch";
 				INFOPLIST_FILE = "PEFViewer/PEFViewer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PEFViewer/PEFViewer-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -587,13 +601,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PEFViewer/PEFViewer-Prefix.pch";
 				INFOPLIST_FILE = "PEFViewerTests/PEFViewerTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -604,13 +618,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PEFViewer/PEFViewer-Prefix.pch";
 				INFOPLIST_FILE = "PEFViewerTests/PEFViewerTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

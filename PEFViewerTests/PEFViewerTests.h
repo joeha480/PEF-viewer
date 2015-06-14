@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Joel Håkansson. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface PEFViewerTests : SenTestCase
+@interface PEFViewerTests : XCTestCase
 
 @end
