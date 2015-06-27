@@ -39,12 +39,12 @@
 		7F654D921901416D006C0BB9 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F654D901901416D006C0BB9 /* about@2x.png */; };
 		7F654DA9190147B7006C0BB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F654DA8190147B7006C0BB9 /* Images.xcassets */; };
 		7F6E7960184E59580061C245 /* PEFBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E795F184E59580061C245 /* PEFBook.m */; };
-		7F6E7963184E5C860061C245 /* PEFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6E7962184E5C860061C245 /* PEFPage.m */; };
 		7F7795A21B2DC0E9005008C8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7795A11B2DC0E9005008C8 /* Localization.swift */; };
 		7F7795A41B2DC64F005008C8 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7795A31B2DC64F005008C8 /* Row.swift */; };
 		7F7795A61B2DC858005008C8 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7795A51B2DC858005008C8 /* Attributes.swift */; };
 		7F79C92D18756A9700D7F3E6 /* PEFFileSelctViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F79C92C18756A9700D7F3E6 /* PEFFileSelctViewController.m */; };
 		7F79C93318758CAC00D7F3E6 /* PEFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F79C93218758CAC00D7F3E6 /* PEFPageView.m */; };
+		7FD3AAD91B3EB00F00E3C868 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD3AAD81B3EB00F00E3C868 /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +125,7 @@
 		7F79C93218758CAC00D7F3E6 /* PEFPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFPageView.m; sourceTree = "<group>"; };
 		7F80D68A18E0B1C900947E3E /* PEFRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFRow.h; sourceTree = "<group>"; };
 		7F80D68B18E0B1C900947E3E /* PEFRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFRow.m; sourceTree = "<group>"; };
+		7FD3AAD81B3EB00F00E3C868 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +184,7 @@
 		7F2FBAE617D4FC50000180DF /* PEFViewer */ = {
 			isa = PBXGroup;
 			children = (
+				7FD3AAD71B3EAFC600E3C868 /* Deprecated */,
 				7F7795A01B2DC0E8005008C8 /* PEFViewer-Bridging-Header.h */,
 				7F3937B518F7077B00CCDB64 /* Localization */,
 				7F3937B418F7074300CCDB64 /* View */,
@@ -238,15 +240,10 @@
 		7F3937B218F7062300CCDB64 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7F06405B1882B30000E71781 /* PEFAttributes.h */,
-				7F06405C1882B30000E71781 /* PEFAttributes.m */,
 				7F7795A51B2DC858005008C8 /* Attributes.swift */,
 				7F6E795E184E59580061C245 /* PEFBook.h */,
 				7F6E795F184E59580061C245 /* PEFBook.m */,
-				7F6E7961184E5C860061C245 /* PEFPage.h */,
-				7F6E7962184E5C860061C245 /* PEFPage.m */,
-				7F80D68A18E0B1C900947E3E /* PEFRow.h */,
-				7F80D68B18E0B1C900947E3E /* PEFRow.m */,
+				7FD3AAD81B3EB00F00E3C868 /* Page.swift */,
 				7F7795A31B2DC64F005008C8 /* Row.swift */,
 				7F177C1818C1D42300175A06 /* PEFBrailleTableFactory.h */,
 				7F177C1918C1D42300175A06 /* PEFBrailleTableFactory.m */,
@@ -296,11 +293,24 @@
 		7F3937B518F7077B00CCDB64 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				7F79C92E18756E8600D7F3E6 /* PEFL10N.h */,
-				7F79C92F18756E8600D7F3E6 /* PEFL10N.m */,
 				7F7795A11B2DC0E9005008C8 /* Localization.swift */,
 			);
 			name = Localization;
+			sourceTree = "<group>";
+		};
+		7FD3AAD71B3EAFC600E3C868 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				7F79C92E18756E8600D7F3E6 /* PEFL10N.h */,
+				7F79C92F18756E8600D7F3E6 /* PEFL10N.m */,
+				7F06405B1882B30000E71781 /* PEFAttributes.h */,
+				7F06405C1882B30000E71781 /* PEFAttributes.m */,
+				7F6E7961184E5C860061C245 /* PEFPage.h */,
+				7F6E7962184E5C860061C245 /* PEFPage.m */,
+				7F80D68A18E0B1C900947E3E /* PEFRow.h */,
+				7F80D68B18E0B1C900947E3E /* PEFRow.m */,
+			);
+			name = Deprecated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,13 +447,13 @@
 				7F79C93318758CAC00D7F3E6 /* PEFPageView.m in Sources */,
 				7F3937BA18F9A0DA00CCDB64 /* PEFEmptyViewController.m in Sources */,
 				7F06405A187951C400E71781 /* PEFDelegate.m in Sources */,
+				7FD3AAD91B3EB00F00E3C868 /* Page.swift in Sources */,
 				7F654D8018FEFE68006C0BB9 /* DetailViewManager.m in Sources */,
 				7F2FBAFA17D4FC50000180DF /* PEFRootViewController.m in Sources */,
 				7F7795A61B2DC858005008C8 /* Attributes.swift in Sources */,
 				7F2FBAFD17D4FC50000180DF /* PEFDataViewController.m in Sources */,
 				7F79C92D18756A9700D7F3E6 /* PEFFileSelctViewController.m in Sources */,
 				7F6E7960184E59580061C245 /* PEFBook.m in Sources */,
-				7F6E7963184E5C860061C245 /* PEFPage.m in Sources */,
 				7F7795A41B2DC64F005008C8 /* Row.swift in Sources */,
 				7F2FBB0017D4FC50000180DF /* PEFModelController.m in Sources */,
 			);
