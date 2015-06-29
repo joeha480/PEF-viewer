@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7F06405A187951C400E71781 /* PEFDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F064059187951C400E71781 /* PEFDelegate.m */; };
 		7F177C1718C125C900175A06 /* PEFTableSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F177C1618C125C900175A06 /* PEFTableSelectViewController.m */; };
-		7F177C1A18C1D42300175A06 /* PEFBrailleTableFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F177C1918C1D42300175A06 /* PEFBrailleTableFactory.m */; };
 		7F2FBAE117D4FC50000180DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2FBAE017D4FC50000180DF /* UIKit.framework */; };
 		7F2FBAE317D4FC50000180DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2FBAE217D4FC50000180DF /* Foundation.framework */; };
 		7F2FBAE517D4FC50000180DF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2FBAE417D4FC50000180DF /* CoreGraphics.framework */; };
@@ -28,6 +27,7 @@
 		7F3937BA18F9A0DA00CCDB64 /* PEFEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3937B918F9A0DA00CCDB64 /* PEFEmptyViewController.m */; };
 		7F3937BD18F9CF6000CCDB64 /* PEFNavigationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3937BC18F9CF6000CCDB64 /* PEFNavigationTableViewController.m */; };
 		7F5B8D3618FEF1770001CB6C /* PEFAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5B8D3518FEF1770001CB6C /* PEFAboutViewController.m */; };
+		7F5EF3631B4022AC007F699F /* BrailleTableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5EF3621B4022AC007F699F /* BrailleTableFactory.swift */; };
 		7F654D8018FEFE68006C0BB9 /* DetailViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F654D7F18FEFE68006C0BB9 /* DetailViewManager.m */; };
 		7F654D8218FF176C006C0BB9 /* butterfly.pef in Resources */ = {isa = PBXBuildFile; fileRef = 7F654D8118FF176C006C0BB9 /* butterfly.pef */; };
 		7F654D8919013E94006C0BB9 /* translate.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F654D8719013E94006C0BB9 /* translate.png */; };
@@ -99,6 +99,7 @@
 		7F3937C118FAF98100CCDB64 /* PEFNavigation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PEFNavigation.h; sourceTree = "<group>"; };
 		7F5B8D3418FEF1770001CB6C /* PEFAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEFAboutViewController.h; sourceTree = "<group>"; };
 		7F5B8D3518FEF1770001CB6C /* PEFAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEFAboutViewController.m; sourceTree = "<group>"; };
+		7F5EF3621B4022AC007F699F /* BrailleTableFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrailleTableFactory.swift; sourceTree = "<group>"; };
 		7F654D7E18FEFE68006C0BB9 /* DetailViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewManager.h; sourceTree = "<group>"; };
 		7F654D7F18FEFE68006C0BB9 /* DetailViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewManager.m; sourceTree = "<group>"; };
 		7F654D8118FF176C006C0BB9 /* butterfly.pef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = butterfly.pef; sourceTree = "<group>"; };
@@ -246,9 +247,8 @@
 				7F6E795F184E59580061C245 /* PEFBook.m */,
 				7FD3AAD81B3EB00F00E3C868 /* Page.swift */,
 				7F7795A31B2DC64F005008C8 /* Row.swift */,
-				7F177C1818C1D42300175A06 /* PEFBrailleTableFactory.h */,
-				7F177C1918C1D42300175A06 /* PEFBrailleTableFactory.m */,
 				7FD3AADA1B3EB6DA00E3C868 /* BrailleTable.swift */,
+				7F5EF3621B4022AC007F699F /* BrailleTableFactory.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -301,6 +301,8 @@
 		7FD3AAD71B3EAFC600E3C868 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
+				7F177C1818C1D42300175A06 /* PEFBrailleTableFactory.h */,
+				7F177C1918C1D42300175A06 /* PEFBrailleTableFactory.m */,
 				7F177C1B18C1D8D700175A06 /* PEFBrailleTable.h */,
 				7F177C1C18C1D8D700175A06 /* PEFBrailleTable.m */,
 				7F79C92E18756E8600D7F3E6 /* PEFL10N.h */,
@@ -441,10 +443,10 @@
 				7F5B8D3618FEF1770001CB6C /* PEFAboutViewController.m in Sources */,
 				7F2FBAED17D4FC50000180DF /* main.m in Sources */,
 				7F7795A21B2DC0E9005008C8 /* Localization.swift in Sources */,
-				7F177C1A18C1D42300175A06 /* PEFBrailleTableFactory.m in Sources */,
 				7F177C1718C125C900175A06 /* PEFTableSelectViewController.m in Sources */,
 				7F2FBAF117D4FC50000180DF /* PEFAppDelegate.m in Sources */,
 				7F3937BD18F9CF6000CCDB64 /* PEFNavigationTableViewController.m in Sources */,
+				7F5EF3631B4022AC007F699F /* BrailleTableFactory.swift in Sources */,
 				7F79C93318758CAC00D7F3E6 /* PEFPageView.m in Sources */,
 				7F3937BA18F9A0DA00CCDB64 /* PEFEmptyViewController.m in Sources */,
 				7FD3AADB1B3EB6DA00E3C868 /* BrailleTable.swift in Sources */,
