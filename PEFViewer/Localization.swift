@@ -9,7 +9,7 @@
 import Foundation
 
 @objc(PEFL10N)
-class Localization {
+class Localization : NSObject {
 	
 	static func filesTitle() -> String {
 		return "Files"

@@ -9,7 +9,7 @@
 import Foundation
 
 @objc(PEFRow)
-class Row {
+class Row : NSObject {
 	@objc var data: String?
 	@objc var rowgap: UInt = 0;
 }

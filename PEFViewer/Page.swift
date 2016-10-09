@@ -9,7 +9,7 @@
 import Foundation
 
 @objc(PEFPage)
-class Page {
+class Page : NSObject {
 	
 	@objc let width, height: Int;
 	@objc var data:Array<Row>;
@@ -27,7 +27,7 @@ class Page {
 		self.pageNumber = 0;
 	}
 	
-	func addRow(data:Row) {
+	func addRow(_ data:Row) {
 		self.data.append(data);
 	}
 	

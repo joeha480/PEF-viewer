@@ -9,7 +9,7 @@
 import Foundation
 
 @objc(PEFBrailleTable)
-class BrailleTable {
+class BrailleTable : NSObject {
 	@objc let tName, tDescription, table:String;
 	
 	init(name:String, description desc:String, table:String) {

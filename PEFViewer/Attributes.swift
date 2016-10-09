@@ -9,7 +9,7 @@
 import Foundation
 
 @objc(PEFAttributes)
-class Attributes {
+class Attributes : NSObject {
 	@objc let width: Int
 	@objc let height: Int
 	@objc let duplex: Bool
