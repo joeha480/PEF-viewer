@@ -70,7 +70,7 @@
 {
     // Clear any bar button item from the detail view controller that is about to
     // no longer be displayed.
-    self.detailViewController.navigationPaneBarButtonItem = nil;
+    //self.detailViewController.navigationPaneBarButtonItem = nil;
     
     _detailViewController = detailViewController;
     
